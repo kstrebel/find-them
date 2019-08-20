@@ -3,7 +3,11 @@ guid: 94827a28ae2e3574eba2125a07ad46a0
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - OrbRenderer: {instanceID: 0}
+  - BombMaterial: {instanceID: 0}
+  - SafeMaterial: {instanceID: 0}
+  - UnknownMaterial: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

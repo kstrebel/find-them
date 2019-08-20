@@ -15,7 +15,9 @@ public class Orb_Logic : MonoBehaviour
     public bool IsBomb
     {
         get { return isBomb; }
-        set { isBomb = value; }
+        set { isBomb = value;
+            UpdateBombVisual();
+        }
     }
 
     private void UpdateBombVisual()
