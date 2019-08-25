@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8295627077930043693}
   m_Layer: 0
   m_Name: Orb
-  m_TagString: Untagged
+  m_TagString: Orb
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -105,7 +105,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94827a28ae2e3574eba2125a07ad46a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OrbRenderer: {fileID: 1157381311870918954}
-  BombMaterial: {fileID: 2100000, guid: 4f89572ebab899844bf2202b520d1874, type: 2}
-  SafeMaterial: {fileID: 2100000, guid: 0a541afb0f9612c43a8fc4b4daa2f103, type: 2}
-  UnknownMaterial: {fileID: 2100000, guid: 9d5e7056b7a36274a9af42b58f886b78, type: 2}
+  colorHighlight: {r: 0.9715713, g: 1, b: 0.6839622, a: 0}
+  orbRenderer: {fileID: 1157381311870918954}
+  bombMaterial: {fileID: 2100000, guid: 4f89572ebab899844bf2202b520d1874, type: 2}
+  safeMaterial: {fileID: 2100000, guid: 0a541afb0f9612c43a8fc4b4daa2f103, type: 2}
+  unknownMaterial: {fileID: 2100000, guid: 9d5e7056b7a36274a9af42b58f886b78, type: 2}

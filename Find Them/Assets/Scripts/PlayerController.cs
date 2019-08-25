@@ -10,6 +10,10 @@ public class PlayerController : MonoBehaviour
     [Header("Camera")]
     [SerializeField] private Camera cameraController;
     [SerializeField] private float sensitivity;
+    [SerializeField] private float reachDist;
+
+    private bool Fire1LastFrame = false;
+    private GameObject lastTarget = null;
 
     private void Start()
     {
@@ -25,12 +29,50 @@ public class PlayerController : MonoBehaviour
 
         characterController.Move(movement);
 
-        //Vector3 camera = Vector3.zero;
-        //
-        //camera = new Vector3(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"), 0f);
-        //camera *= sensitivity;
-
         transform.RotateAround(transform.position, transform.right, Input.GetAxis("Mouse Y") * sensitivity * -1f);
         transform.RotateAround(transform.position, Vector3.up, Input.GetAxis("Mouse X") * sensitivity);
+
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit, reachDist))
+        {
+            GameObject target = hit.transform.gameObject;
+
+            if (target != lastTarget)
+            {
+                if (target.tag == "Orb")
+                {
+                    target.GetComponent<Orb_Logic>().HighlightOrb(true);
+                }
+                if (lastTarget != null && lastTarget.tag == "Orb")
+                {
+                    lastTarget.GetComponent<Orb_Logic>().HighlightOrb(false);
+                }
+
+                lastTarget = target;
+            }
+
+            if (!Fire1LastFrame && 0 < Input.GetAxis("Fire1") && target.tag == "Orb")
+            {
+                lastTarget.GetComponent<Orb_Logic>().ClickOrb();
+            }
+        }
+        else if (lastTarget != null && lastTarget.tag == "Orb")
+        {
+            lastTarget.GetComponent<Orb_Logic>().HighlightOrb(false);
+            lastTarget = null;
+        }
+
+        if (!Fire1LastFrame && 0 < Input.GetAxis("Fire1"))
+        {
+            Fire1LastFrame = true;
+            Debug.Log("Click");
+
+        }
+        else if (Fire1LastFrame && 0 == Input.GetAxis("Fire1"))
+        {
+            Fire1LastFrame = false;
+        }
     }
 }

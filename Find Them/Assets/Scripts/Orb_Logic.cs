@@ -1,34 +1,62 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Orb_Logic : MonoBehaviour
 {
-    [SerializeField] private MeshRenderer OrbRenderer;
+    //temporary
+    [SerializeField] private Color colorHighlight;
 
-    [SerializeField] private Material BombMaterial;
-    [SerializeField] private Material SafeMaterial;
-    [SerializeField] private Material UnknownMaterial;
+    [SerializeField] private MeshRenderer orbRenderer;
+
+    [SerializeField] private Material bombMaterial;
+    [SerializeField] private Material safeMaterial;
+    [SerializeField] private Material unknownMaterial;
 
     private bool isBomb = false;
+    private bool isRevealed = false;
 
     public bool IsBomb
     {
         get { return isBomb; }
-        set { isBomb = value;
-            UpdateBombVisual();
-        }
+        set { isBomb = value; }
     }
 
     private void UpdateBombVisual()
     {
         if (isBomb)
         {
-            OrbRenderer.material = BombMaterial;
+            orbRenderer.material = bombMaterial;
         }
         else
         {
-            OrbRenderer.material = SafeMaterial;
+            orbRenderer.material = safeMaterial;
+        }
+
+        isRevealed = true;
+    }
+
+    public void HighlightOrb(bool highlighted)
+    {
+        if (!isRevealed)
+        {
+            if (highlighted)
+            {
+                orbRenderer.material.color = colorHighlight;
+            }
+            else
+            {
+                orbRenderer.material = unknownMaterial;
+            }
+        }
+    }
+
+    public void ClickOrb()
+    {
+        if (!isRevealed)
+        {
+            UpdateBombVisual();
         }
     }
 }

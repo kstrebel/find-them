@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,7 +13,7 @@ public class Gameplay_Logic : MonoBehaviour
 
     void Start()
     {
-        spawnOrbs(3, 1);
+        spawnOrbs(5, 4);
     }
 
     private void spawnOrbs(int orbs, int bombs)
