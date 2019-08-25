@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: 94827a28ae2e3574eba2125a07ad46a0
+guid: ff5a3e7ea059d1e469b9fbfbf4c2cfba
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - OrbRenderer: {instanceID: 0}
-  - BombMaterial: {instanceID: 0}
-  - SafeMaterial: {instanceID: 0}
-  - UnknownMaterial: {instanceID: 0}
+  - orbPrefab: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
