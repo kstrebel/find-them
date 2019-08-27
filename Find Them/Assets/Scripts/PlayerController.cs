@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
+    //temporary, probably
+    [Header("Placing Sensors")]
+    [SerializeField] private GameObject instSensorAt;
+    [SerializeField] private GameObject sensorCount;
+
     [Header("Movement")]
     [SerializeField] private CharacterController characterController;
     [SerializeField] private float speed;
@@ -14,6 +19,7 @@ public class PlayerController : MonoBehaviour
 
     private bool Fire1LastFrame = false;
     private GameObject lastTarget = null;
+    private GameObject sensorToPlace = null;
 
     private void Start()
     {
@@ -35,7 +41,24 @@ public class PlayerController : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit, reachDist))
+        if (0 < Input.GetAxis("Fire2"))
+        {
+            if (sensorToPlace == null)
+            {
+                sensorToPlace = GameObject.Instantiate(sensorCount, instSensorAt.transform);
+            }
+            if (!Fire1LastFrame && 0 < Input.GetAxis("Fire1"))
+            {
+                instSensorAt.transform.DetachChildren();
+
+                sensorToPlace = null;
+            }
+        }
+        else if (sensorToPlace != null && 0 == Input.GetAxis("Fire2"))
+        {
+            GameObject.Destroy(sensorToPlace);
+        }
+        else if (Physics.Raycast(ray, out hit, reachDist))
         {
             GameObject target = hit.transform.gameObject;
 
@@ -67,7 +90,7 @@ public class PlayerController : MonoBehaviour
         if (!Fire1LastFrame && 0 < Input.GetAxis("Fire1"))
         {
             Fire1LastFrame = true;
-            Debug.Log("Click");
+            Debug.Log("Left Click");
 
         }
         else if (Fire1LastFrame && 0 == Input.GetAxis("Fire1"))
