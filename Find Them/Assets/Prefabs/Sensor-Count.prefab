@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6308857188538850337}
   - component: {fileID: 8479448071280501642}
   - component: {fileID: 5886313647209243996}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Range
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -120,7 +120,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 14
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!1 &2125167487591742887
 GameObject:
