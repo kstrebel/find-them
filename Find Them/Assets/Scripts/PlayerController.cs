@@ -46,10 +46,14 @@ public class PlayerController : MonoBehaviour
             if (sensorToPlace == null)
             {
                 sensorToPlace = GameObject.Instantiate(sensorCount, instSensorAt.transform);
+
+                Physics.IgnoreCollision(gameObject.GetComponent<Collider>(), sensorToPlace.GetComponentInChildren<SensorRange_Logic>().transform.GetComponent<Collider>());
             }
             if (!Fire1LastFrame && 0 < Input.GetAxis("Fire1"))
             {
                 instSensorAt.transform.DetachChildren();
+
+                sensorToPlace.GetComponent<Sensor_Logic>().onPlacement();
 
                 sensorToPlace = null;
             }
