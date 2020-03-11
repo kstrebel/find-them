@@ -19,7 +19,7 @@ public class Gameplay_Logic : MonoBehaviour
         radiusBetweenOrbs = paddingBetweenOrbs + orbPrefab.GetComponent<SphereCollider>().radius;
         try
         {
-            spawnOrbs(5, 4);
+            spawnOrbs(GameInformation.Orbs, GameInformation.Bombs);
         }
         catch (ArgumentException e)
         {

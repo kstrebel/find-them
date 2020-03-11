@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+
 public class GameSetup_Logic : MonoBehaviour
 {
     [SerializeField] private Slider orbsSlider;
@@ -18,6 +19,11 @@ public class GameSetup_Logic : MonoBehaviour
     {
         orbsValue.text = orbsSlider.value.ToString();
         bombsValue.text = bombsSlider.value.ToString();
+    }
+
+    public void StartGame()
+    {
+        GameInformation.StartNewGame((int)orbsSlider.value, (int)bombsSlider.value);
     }
 
     public void ValueChangeOrbStart()
