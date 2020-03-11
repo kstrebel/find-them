@@ -96,6 +96,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
+    m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -203,6 +204,26 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2552450976336467405, guid: 21f6509cb237479479c7f30d2eec5ffd,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2552450976336467405, guid: 21f6509cb237479479c7f30d2eec5ffd,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2552450976336467405, guid: 21f6509cb237479479c7f30d2eec5ffd,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2552450976336467405, guid: 21f6509cb237479479c7f30d2eec5ffd,
+        type: 3}
+      propertyPath: m_textInfo.pageCount
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3576766061418047706, guid: 21f6509cb237479479c7f30d2eec5ffd,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -262,26 +283,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2552450976336467405, guid: 21f6509cb237479479c7f30d2eec5ffd,
-        type: 3}
-      propertyPath: m_textInfo.characterCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2552450976336467405, guid: 21f6509cb237479479c7f30d2eec5ffd,
-        type: 3}
-      propertyPath: m_textInfo.wordCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2552450976336467405, guid: 21f6509cb237479479c7f30d2eec5ffd,
-        type: 3}
-      propertyPath: m_textInfo.lineCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2552450976336467405, guid: 21f6509cb237479479c7f30d2eec5ffd,
-        type: 3}
-      propertyPath: m_textInfo.pageCount
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 21f6509cb237479479c7f30d2eec5ffd, type: 3}
@@ -371,8 +372,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, Unity.ugui,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
@@ -382,6 +381,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!222 &408185136
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -415,8 +415,9 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 663793365}
   m_Enabled: 1
-  serializedVersion: 9
+  serializedVersion: 10
   m_Type: 1
+  m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
   m_Intensity: 1
   m_Range: 10
@@ -512,7 +513,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   orbPrefab: {fileID: 3151291362760708110, guid: 85683199b8794b44d8178595d243963c,
     type: 3}
-  playArea: {x: 6, y: 1, z: 4}
+  playArea: {x: 10, y: 1, z: 6}
   paddingBetweenOrbs: 0.05
 --- !u!4 &813358186
 Transform:
@@ -581,6 +582,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -878,6 +880,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Orb
+      objectReference: {fileID: 0}
+    - target: {fileID: 3151291362760708110, guid: 85683199b8794b44d8178595d243963c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6275739812812800594, guid: 85683199b8794b44d8178595d243963c,
         type: 3}
