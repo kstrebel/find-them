@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Camera cameraController;
     [SerializeField] private float sensitivity;
     [SerializeField] private float reachDist;
+    private float rotX = 0f;
+    private float rotY = 0f;
 
     private bool Fire1LastFrame = false;
     private GameObject lastTarget = null;
@@ -28,15 +30,21 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        Vector3 movement = Vector3.zero;
+        rotX += Input.GetAxis("Mouse X") * sensitivity;
+        rotY += Input.GetAxis("Mouse Y") * sensitivity;
+
+        rotY = Mathf.Clamp(rotY, -50f, 50f);
+
+        transform.rotation = Quaternion.Euler(-rotY, rotX, 0f);
+
+        Vector3 movement;
 
         movement = new Vector3(Input.GetAxis("Horizontal"), -10f, Input.GetAxis("Vertical"));
         movement *= speed * Time.deltaTime;
 
-        characterController.Move(movement);
+        movement = Quaternion.Euler(0f, rotX, 0f) * movement;
 
-        transform.RotateAround(transform.position, transform.right, Input.GetAxis("Mouse Y") * sensitivity * -1f);
-        transform.RotateAround(transform.position, Vector3.up, Input.GetAxis("Mouse X") * sensitivity);
+        characterController.Move(movement);
 
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
