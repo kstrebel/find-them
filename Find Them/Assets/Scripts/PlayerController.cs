@@ -30,19 +30,21 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        Vector3 movement = Vector3.zero;
-
-        movement = new Vector3(Input.GetAxis("Horizontal"), -10f, Input.GetAxis("Vertical"));
-        movement *= speed * Time.deltaTime;
-
-        characterController.Move(movement);
-
         rotX += Input.GetAxis("Mouse X") * sensitivity;
         rotY += Input.GetAxis("Mouse Y") * sensitivity;
 
         rotY = Mathf.Clamp(rotY, -50f, 50f);
 
         transform.rotation = Quaternion.Euler(-rotY, rotX, 0f);
+
+        Vector3 movement;
+
+        movement = new Vector3(Input.GetAxis("Horizontal"), -10f, Input.GetAxis("Vertical"));
+        movement *= speed * Time.deltaTime;
+
+        movement = Quaternion.Euler(0f, rotX, 0f) * movement;
+
+        characterController.Move(movement);
 
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
